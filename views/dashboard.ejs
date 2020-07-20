@@ -1,0 +1,54 @@
+
+<div class="container">
+    <table class="table table-dark table-stripped">
+        <tr>
+            <thead>
+                <th>Name</th>
+                <th>Fname</th>
+                <th>Contact</th>
+                <th>DOB</th>
+                <th>email</th>
+                <th>Roll No</th>
+            </thead>
+        </tr>
+        <tbody>
+            <%if(!key){%>
+        <% stud.forEach(function(st){%>
+            <tr>
+            <td><%- st.name%></td>
+            <td><%- st.fname%></td>
+            <td><%- st.Contact%></td>
+            <td><%- st.Dob%></td>
+            <td><%- st.email%></td>
+            <td><%- st._id%></td>
+        </tr>
+        <% });%>
+        <%}%>
+        <%if(key){%>
+            <tr>
+                <td><%- stud.name%></td>
+                <td><%- stud.fname%></td>
+                <td><%- stud.Contact%></td>
+                <td><%- stud.Dob%></td>
+                <td><%- stud.email%></td>
+                <td><%- stud._id%></td>
+            </tr>
+        <%}%>
+    </tbody>
+    
+    </table>
+
+
+</div>
+<div class="container">
+    <%if(!key){%>   
+    <a class="btn btn-primary btn-block" href="/Admin/student_register" type="button">Want to Register New One</a>
+    <a class="btn btn-block btn-danger" href="/Admin/logout" type="button">Log Out</a>
+    <%}%>
+    
+<%if(key){%>
+    <a class="btn btn-primary btn-block" href="/Student/student_Edit" type="button">Want to Edit Profile</a>
+    <a class="btn btn-block btn-danger" href="/Student/logout" type="button">Log Out</a>
+
+    <%}%>
+</div>
