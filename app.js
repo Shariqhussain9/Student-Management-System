@@ -3,13 +3,15 @@ const expressLayout=require('express-ejs-layouts');
 const flash=require('connect-flash');
 const session=require('express-session');
 const passport=require('passport')
+const path=require('path');
 const app=express();
 const db=require('./modals/key1').MongoUri;
 
 //main hai local ka kaam uthane ke liye
 require('./config/passport')(passport);
 
-
+//set path statically
+app.use(express.static(path.join(__dirname,'public')));
 
 const mongoose=require('mongoose');
 mongoose.connect(db,{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{
@@ -48,6 +50,12 @@ app.use((req,res,next)=>{
 app.get('/',(req,res)=>{
     res.render('home');
 });
+app.get('/contactus',(req,res)=>{
+    res.render('contactus');
+});
+app.get('/Aboutus',(req,res)=>{
+    res.render('aboutus');
+})
 
 
 app.use('/Admin',require('./controller/Admin'));
